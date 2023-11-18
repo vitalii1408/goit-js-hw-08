@@ -1,4 +1,4 @@
-import Player from '@vimeo/plauyer';
+import Player from '@vimeo/player';
 import { async } from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
