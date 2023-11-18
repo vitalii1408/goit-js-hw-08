@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   video.addEventListener('timeupdate', saveCurrentTime);
-  window.addEventListener('beforeunload', saveCurrentTime);
+  window.addEventListener('unload', saveCurrentTime);
   restoreCurrentTime();
 });
