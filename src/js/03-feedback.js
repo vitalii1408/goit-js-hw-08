@@ -10,8 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
   loadFromLocalStorage();
   form.addEventListener('submit', function (event) {
     event.preventDefault();
-    clearLocalStorage();
-    console.log(getFormData());
+    if (validateForm()) {
+      clearLocalStorage();
+      console.log(getFormData());
+      emailInput.value = '';
+      messageInput.value = '';
+    } else {
+      alert('Будь ласка, заповніть всі поля перед відправкою.');
+    }
   });
   function saveToLocalStorage() {
     const formData = getFormData();
@@ -35,7 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
   function setFormData(formData) {
-    emailInput.value = formData.email || '';
-    messageInput.value = formData.message || '';
+    if ('message' in formData) {
+      messageInput.value = formData.message;
+    }
+  }
+  function validateForm() {
+    return emailInput.value.trim() !== '' && messageInput.value.trim() !== '';
   }
 });
