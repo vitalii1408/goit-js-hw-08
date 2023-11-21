@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function clearLocalStorage() {
     localStorage.removeItem(feedbackFormStateKey);
   }
+
   function getFormData() {
     return {
       email: emailInput.value,
@@ -41,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
   function setFormData(formData) {
+    if ('email' in formData) {
+      emailInput.value = formData.email;
+    }
     if ('message' in formData) {
       messageInput.value = formData.message;
     }
